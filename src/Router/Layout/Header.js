@@ -10,6 +10,7 @@ import "./Style.css";
 
 // Components
 import { tabsSx, tabsSxMain } from "../../Components/Styles/TabsSx";
+import { logoutData } from "../../Services/services";
 
 export default function Header(props) {
     const {
@@ -26,6 +27,14 @@ export default function Header(props) {
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
+
+    async function logoutUser() {
+        await logoutData("/auth/logout").then(response => {
+            if (response.status === 200) {
+                window.location.reload();
+            }
+        });
+    }
 
     const DrawerList = (
         <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
@@ -76,6 +85,10 @@ export default function Header(props) {
                     <Tab label="Painel Principal" sx={tabsSx}/>
                     <Tab label="Perfil" sx={tabsSx}/>
                 </Tabs>
+
+                <IconButton onClick={() => logoutUser()}>
+                    Profile
+                </IconButton>
             </Box>
         </header>
     );

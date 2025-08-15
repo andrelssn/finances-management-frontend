@@ -1,6 +1,19 @@
+@font-face {
+  	font-family: 'lexend';
+  	src: local('lexend'), url('Fonts/LexendDeca-Regular.ttf') format('truetype');
+}
+
+* {
+	font-family: 'unageo', sans-serif !important;
+}
+
+body {
+    background: #E8E8E8;
+}
 
 :root {
-    --text-main:      #334333;
-    --text-secondary: #343234;
+    --text:      #505050;
+    --text-secondary: #8a8a8a;
     --theme:          #2D9F00;
+    --theme-dark:          #296d0e;
 }
