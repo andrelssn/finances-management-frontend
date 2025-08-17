@@ -10,7 +10,7 @@ export default function MainRouter(props) {
             <Routes>
                 <Route
                     path="/"
-                    element={<Header isMobile={props.isMobile} userData={props.userData}/>}
+                    element={<Header {...props}/>}
                 >
                     <Route index element={<Home/>}/>
                     <Route path="test" element={<Home/>}/>

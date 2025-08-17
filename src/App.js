@@ -14,7 +14,6 @@ import MainRouter from './Router/MainRouter';
 import { clearSecurity, getData } from './Services/services';
 
 function App() {
-	const [userData, setUserData] = React.useState(null);
 	const [view, setView] 	      = React.useState(<LoaderSystem sx={{ mt: 40 }}/>);
 	const [reload, setReload]	  = React.useState(1);
 	const [snackbar, setSnackbar] = React.useState({ open: false, severity: "", message: "" });
@@ -27,8 +26,7 @@ function App() {
 
 		await getData('/user').then(response => {
 			if (response.status === 200) {
-				setUserData(response);
-				setView(<MainRouter isMobile={isMobile} userData={userData}/>);
+				setView(<MainRouter isMobile={isMobile} userData={response.data} setReload={setReload} setSnackbar={setSnackbar}/>);
 			} else {
 				setView(<Login setReload={setReload} reload={reload} setSnackbar={setSnackbar}/>);
 				clearSecurity();
