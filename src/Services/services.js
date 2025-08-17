@@ -34,6 +34,23 @@ export async function postData(data) {
     }
 }
 
+export async function putData(data) {
+    try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
+        const response = await axios.put(apiUrl + data.uri, JSON.stringify(data.body), {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getSecurityKey()}`
+            }
+        });
+
+        return response;
+    } catch (error) {
+        return error.response;
+    }
+}
+
 export async function loginPostData(data) {
     try {
         const apiUrl = process.env.REACT_APP_API_URL;

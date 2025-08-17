@@ -7,7 +7,7 @@ export const tabsSxMain = {
 export const tabsSx = {
     textTransform: 'none',
     fontWeight: 'bold',
-    fontSize: '16px',
+    fontSize: '15px',
     color: 'text.secondary',
     '&.Mui-selected': {
         color: 'var(--theme)',

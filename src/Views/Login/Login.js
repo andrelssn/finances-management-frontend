@@ -11,7 +11,7 @@ import logo from "../../Images/FinancesLogo.png";
 import { loginPostData, postData, SecurityManagement } from "../../Services/services";
 
 // Components
-import { StyledTextField } from "./StyledTextField";
+import { StyledTextField } from "../../Components/StyledTextField/StyledTextField";
 
 export default function Login(props) {
     const [registerForm, setRegisterForm] = React.useState({ "email": "", "name": "", "password": "", "password_confirmation": "" })
