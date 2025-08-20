@@ -51,6 +51,23 @@ export async function putData(data) {
     }
 }
 
+export async function deleteData(uri) {
+    try {
+        const apiUrl = process.env.REACT_APP_API_URL;
+
+        const response = await axios.delete(apiUrl + uri, {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${getSecurityKey()}`
+            }
+        });
+
+        return response;
+    } catch (error) {
+        return error.response;
+    }
+}
+
 export async function loginPostData(data) {
     try {
         const apiUrl = process.env.REACT_APP_API_URL;
