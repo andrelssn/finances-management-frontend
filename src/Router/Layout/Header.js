@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Divider, Drawer, IconButton, List, ListItemButton, Tab, Tabs, Typography } from "@mui/material";
+import { Outlet } from "react-router-dom";
 
 // Icons
 import MenuIcon from '@mui/icons-material/Menu';
@@ -16,6 +17,11 @@ import "./Style.css";
 // Components
 import { tabsSx, tabsSxMain } from "../../Components/Styles/TabsSx";
 import { CustomMenu, CustomMenuItem } from "../../Components/MenuStyled/MenuStyled";
+
+// State Components
+import userAuthData from "../../Components/States/UserState";
+
+// Modal
 import ModalProfile from "./ModalProfile/ModalProfile";
 
 // Services
@@ -24,10 +30,11 @@ import { logoutData } from "../../Services/services";
 export default function Header(props) {
     const {
         isMobile,
-        userData,
         setReload,
         setSnackbar
     } = props;
+
+    const userData = userAuthData((state) => state.user);
 
     const [anchorEl, setAnchorEl]   = React.useState(null);
     const [tabValue, setTabValue]   = React.useState(0);
@@ -97,58 +104,62 @@ export default function Header(props) {
     }
 
     return (
-        <header className="header">
-            <div>
-                <img
-                    alt="finances-logo"
-                    src={logo}
-                    style={{ width: 100 }}
-                />
-            </div>
-
-            <Box display={"flex"}>
-                <Tabs value={tabValue} onChange={handleChangeTab} sx={tabsSxMain}>
-                    <Tab label="Painel Principal" sx={tabsSx}/>
-                </Tabs>
-
-                <IconButton onClick={handleClickMenu} sx={{ ml: 3 }}>
+        <React.Fragment>
+            <header className="header">
+                <div>
                     <img
                         alt="finances-logo"
-                        src={profile}
-                        style={{ width: 30 }}
+                        src={logo}
+                        style={{ width: 100 }}
                     />
-                </IconButton>
+                </div>
 
-                <CustomMenu
-                    id="basic-menu"
-                    anchorEl={anchorEl}
-                    open={openMenu}
-                    onClose={handleCloseMenu}
-                    slotProps={{
-                        list: {
-                            'aria-labelledby': 'basic-button',
-                        },
-                    }}
-                >
-                    <Typography textAlign={"center"} fontWeight={"bold"} color="var(--text)">
-                        {userData.name}
-                    </Typography>
+                <Box display={"flex"}>
+                    <Tabs value={tabValue} onChange={handleChangeTab} sx={tabsSxMain}>
+                        <Tab label="Painel Principal" sx={tabsSx}/>
+                    </Tabs>
 
-                    <Divider sx={{ m: "10px 0px" }}/>
+                    <IconButton onClick={handleClickMenu} sx={{ ml: 3 }}>
+                        <img
+                            alt="finances-logo"
+                            src={profile}
+                            style={{ width: 30 }}
+                        />
+                    </IconButton>
 
-                    <CustomMenuItem onClick={() => {handleCloseMenu(); handleOpenModal();}}>
-                        <AccountCircleIcon style={{ fontSize: 18, marginRight: 5 }}/>
-                        Meu Perfil
-                    </CustomMenuItem>
+                    <CustomMenu
+                        id="basic-menu"
+                        anchorEl={anchorEl}
+                        open={openMenu}
+                        onClose={handleCloseMenu}
+                        slotProps={{
+                            list: {
+                                'aria-labelledby': 'basic-button',
+                            },
+                        }}
+                    >
+                        <Typography textAlign={"center"} fontWeight={"bold"} color="var(--text)">
+                            {userData.name}
+                        </Typography>
 
-                    <CustomMenuItem onClick={() => logoutUser()}>
-                        <LogoutIcon style={{ fontSize: 18, marginRight: 5 }}/>
-                        Logout
-                    </CustomMenuItem>
-                </CustomMenu>
-            </Box>
+                        <Divider sx={{ m: "10px 0px" }}/>
 
-           <ModalProfile openModal={openModal} handleCloseModal={handleCloseModal} userData={userData} setReload={setReload} setSnackbar={setSnackbar}/>
-        </header>
+                        <CustomMenuItem onClick={() => {handleCloseMenu(); handleOpenModal();}}>
+                            <AccountCircleIcon style={{ fontSize: 18, marginRight: 5 }}/>
+                            Meu Perfil
+                        </CustomMenuItem>
+
+                        <CustomMenuItem onClick={() => logoutUser()}>
+                            <LogoutIcon style={{ fontSize: 18, marginRight: 5 }}/>
+                            Logout
+                        </CustomMenuItem>
+                    </CustomMenu>
+                </Box>
+
+                <ModalProfile openModal={openModal} handleCloseModal={handleCloseModal} userData={userData} setReload={setReload} setSnackbar={setSnackbar}/>
+            </header>
+
+            <Outlet/>
+        </React.Fragment>
     );
 }
