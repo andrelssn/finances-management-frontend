@@ -1,21 +1,38 @@
-@font-face {
-  	font-family: 'lexend';
-  	src: local('lexend'), url('Fonts/LexendDeca-Regular.ttf') format('truetype');
+.App {
+  text-align: center;
 }
 
-* {
-	font-family: 'unageo', sans-serif !important;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-body {
-    background: #E8E8E8;
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-:root {
-    --blue-app:     #388eff;
-    --red-app:      #b81d1d;
-    --text:         #505050;
-    --text-secondary: #8a8a8a;
-    --theme:          #2D9F00;
-    --theme-dark:     #296d0e;
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
