@@ -1,0 +1,60 @@
+.login-paper {
+    width: fit-content;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-self: center;
+    margin-top: 160px;
+    gap: 15px !important;
+    padding: 50px!important;
+    background: linear-gradient(45deg, var(--panel) 0%, #2e2e2e 100%) !important;
+    box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
+        0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
+        0px 7px 15px rgba(0, 0, 0, 0.1), 0px 0px 0px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: blur(8px);
+}
+
+.login-button {
+    display: block;
+    width: 100%;
+    font-weight: bold !important;
+    background: linear-gradient(45deg, var(--theme) 0%, rgb(39, 224, 79) 100%);
+    color: white !important;
+    padding-block: 10px !important;
+    margin: 20px auto;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.login-button:hover {
+    transform: scale(1.03) !important;
+}
+
+.login-button:active {
+    transform: scale(0.95) !important;
+}
+
+.register-button {
+    display: block;
+    width: 100%;
+    font-weight: bold !important;
+    background: linear-gradient(45deg, #313131 0%, #636363 100%);
+    color: var(--text) !important;
+    padding-block: 10px !important;
+    margin: 20px auto;
+    border-radius: 20px;
+    border: none;
+    transition: all 0.2s ease-in-out !important;
+}
+
+.register-button:hover {
+    transform: scale(1.03) !important;
+    font-weight: bold !important;
+}
+
+.register-button:active {
+    transform: scale(0.95) !important;
+    font-weight: bold !important;
+}

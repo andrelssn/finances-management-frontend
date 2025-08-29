@@ -1,0 +1,41 @@
+* {
+	font-family: sans-serif !important;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+  background: radial-gradient(
+      circle at top left,
+      rgba(136, 136, 136, 0.15),   /* azul-app suave */
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(102, 102, 102, 0.12),    /* verde theme */
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at top right,
+      rgba(255, 216, 219, 0.1),    /* vermelho-app */
+      transparent 50%
+    ),
+    var(--background);
+    background-attachment: fixed;
+}
+
+:root {
+    --background:     #0B0B0D;   /* preto suave com leve tom azulado */
+    --panel:          #141416;   /* painel mais claro que o fundo */
+    --blue-app:       #3A9CFF;   /* azul vivo mas não saturado demais */
+    --red-app:        #E63946;   /* vermelho moderno (alerta/erro) */
+    --input-bg:       #1C1C1F;   /* fundo do input */
+    --input-border:   #2A2A2E;   /* borda sutil */
+    --text:           #EDEDED;
+    --text-secondary: #9C9C9C;
+    --theme:          #2D9F00;
+    --theme-dark:     #296d0e;
+}
