@@ -1,15 +1,18 @@
+import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 // import { useMediaQuery, useTheme } from "@mui/material";
 
 // Components
 import Login from "../Views/Login/Login";
+import HeaderAuth from "../Layout/HeaderAuth";
 import Header from "../Layout/Header";
+import userAuthData from "../Components/GlobalState/User";
+import Home from "../Views/Home/Home";
+import Register from "../Views/Register/Register";
 
 // Types
 import type { SnackbarState } from "../Components/MySnackbar/MySnackbar";
-import React from "react";
-import userAuthData from "../Components/GlobalState/User";
-import Home from "../Views/Home/Home";
+import MonthlyExpenses from "../Views/MonthlyExpenses/MonthlyExpenses";
 
 export type MainRouterTypes = {
     setSnackbar: React.Dispatch<React.SetStateAction<SnackbarState>>;
@@ -22,24 +25,37 @@ export default function MainRouter({ setSnackbar, reloadCheck } : MainRouterType
 
     const user = userAuthData((state) => state.user);
 
-    React.useEffect(() => {
-        console.log(user);
-    }, [])
-
     return (
         <BrowserRouter>
             <Routes>
-                <Route
-                    path="/"
-                    element={<Header/>}
-                >
-                    <Route index element={<Home/>}/>
+                { user ? (
+                    <Route
+                        path="/"
+                        element={<Header/>}
+                    >
+                        <Route index element={<MonthlyExpenses/>}/>
+                    </Route>
+                ) : (
+                    <Route
+                        path="/"
+                        element={<HeaderAuth/>}
+                    >
+                        <Route index element={<Home/>}/>
+                    </Route>
+                )}
+
+                <Route element={user ? <Navigate to="/" replace /> : <HeaderAuth/>} >
+                    <Route
+                        path="/auth/login"
+                        element={<Login setSnackbar={setSnackbar} reloadCheck={reloadCheck} />}
+                    />
+
+                    <Route
+                        path="/auth/register"
+                        element={<Register setSnackbar={setSnackbar} reloadCheck={reloadCheck} />}
+                    />
                 </Route>
 
-                <Route
-                    path="/auth"
-                    element={user ? <Navigate to="/" replace /> : <Login setSnackbar={setSnackbar} reloadCheck={reloadCheck} />}
-                />
 
                 {/* <Route path="*" element={<Page404/>}/> */}
             </Routes>
