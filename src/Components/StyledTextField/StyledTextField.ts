@@ -3,7 +3,7 @@ import TextField from "@mui/material/TextField";
 
 export const StyledTextField = styled(TextField)`
     && {
-        margin: 8px 0;
+        margin: 3px 0;
         width: 100%;
 
         .MuiInputBase-root {

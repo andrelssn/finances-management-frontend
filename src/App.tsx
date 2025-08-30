@@ -50,6 +50,7 @@ function App() {
 
     const reloadCheck = () =>  {
         setReload(reload + 1);
+        setView(<LoaderSystem sx={{ mt: 40 }}/>);
     }
 
     return (

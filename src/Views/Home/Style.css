@@ -1,0 +1,6 @@
+.text-glow {
+    background: linear-gradient(135deg, var(--theme), #c3ffb5, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}

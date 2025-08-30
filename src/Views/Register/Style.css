@@ -1,4 +1,4 @@
-.login-paper {
+.register-paper {
     width: fit-content;
     height: fit-content;
     display: flex;
@@ -7,7 +7,7 @@
     justify-self: center;
     margin-top: 5%;
     gap: 15px !important;
-    padding: 50px !important;
+    padding: 50px!important;
     background: linear-gradient(45deg, var(--panel) 0%, #2e2e2e 100%) !important;
     box-shadow: 0px 106px 42px rgba(0, 0, 0, 0.01),
         0px 59px 36px rgba(0, 0, 0, 0.05), 0px 26px 26px rgba(0, 0, 0, 0.09),
