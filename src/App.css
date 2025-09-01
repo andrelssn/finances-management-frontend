@@ -1,5 +1,10 @@
+@font-face {
+  	font-family: 'inter';
+  	src: local('inter'), url('Fonts/Inter_24pt-Regular.ttf') format('truetype');
+}
+
 * {
-	font-family: sans-serif !important;
+	font-family: 'inter', sans-serif !important;
 }
 
 body {
@@ -26,17 +31,11 @@ body {
 
 :root {
 	--background: #0B0B0D;
-	/* preto suave com leve tom azulado */
 	--panel: #1b1b1b;
-	/* painel mais claro que o fundo */
 	--blue-app: #3A9CFF;
-	/* azul vivo mas não saturado demais */
 	--red-app: #E63946;
-	/* vermelho moderno (alerta/erro) */
 	--input-bg: #1C1C1F;
-	/* fundo do input */
 	--input-border: #2A2A2E;
-	/* borda sutil */
 	--text: #EDEDED;
 	--text-secondary: #9C9C9C;
 	--theme: #2D9F00;
@@ -93,12 +92,13 @@ body {
 .header-button {
 	position: relative;
 	display: inline-block;
-	font-weight: bold !important;
-	background: linear-gradient(45deg, #ffffff 0%, #979797 100%);
-	background-clip: text;
+	background: linear-gradient(45deg, #ffffff 30%, #b8b8b8 100%);
+	background-clip: text !important;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	padding: 10px 20px;
+	font-size: 0.875rem !important;
+	padding: 5px 20px !important;
+	text-transform: none !important;
 	border: none;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
@@ -108,11 +108,10 @@ body {
 	content: "";
 	position: absolute;
 	left: 0;
-	bottom: 0;
+	margin-top: 36px;
 	height: 2px;
 	width: 0%;
-	background: linear-gradient(45deg, #ffffff 0%, #979797 100%) !important;
-	border-radius: 5px !important;
+	background: linear-gradient(45deg, #ffffff 30%, #b8b8b8 100%) !important;
 	transition: width 0.3s ease-in-out;
 }
 
@@ -123,25 +122,27 @@ body {
 .header-button-current {
 	position: relative;
 	display: inline-block;
-	font-weight: bold !important;
-	background: linear-gradient(45deg, #ffffff 0%, #979797 100%);
+	background: linear-gradient(45deg, #ffffff 30%, #b8b8b8 100%);
 	background-clip: text;
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	padding: 10px 20px;
+	font-size: 0.875rem !important;
+	padding: 5px 20px !important;
+	text-transform: none !important;
 	border-bottom: 2px solid transparent !important;
-    border-image: linear-gradient(45deg, #ffffff 0%, #979797 100%) !important;
+    border-image: linear-gradient(45deg, #ffffff 30%, #b8b8b8 100%) !important;
     border-image-slice: 1 !important;
 	cursor: pointer;
+	border-radius: 15px !important;
 	transition: all 0.2s ease-in-out;
 }
 
 .header-button svg,
 .header-button-current svg {
-	font-size: 16px !important;
+	font-size: 12px !important;
     width: 1.2em;
     height: 1.2em;
-    color: #bebebe;
+    color: #ffffff;
 }
 
 .text-glow-silver {
@@ -150,3 +151,28 @@ body {
     -webkit-text-fill-color: transparent;
     font-weight: bold !important;
 }
+
+.header-username {
+	color: var(--text);
+	padding: 2px 10px;
+}
+
+.header-username:hover {
+	transition: 0.3s;
+	cursor: pointer;
+	box-shadow: 0px 0px 5px 2px #464646;
+	border-radius: 20px;
+}
+
+.header-logout {
+	color: #cccccc !important;
+}
+
+.header-logout:hover {
+	transition: 0.3s;
+	cursor: pointer;
+	color: #ff5555 !important;
+	box-shadow: 0px 0px 5px 2px #ff5555;
+	border-radius: 20px;
+}
+
