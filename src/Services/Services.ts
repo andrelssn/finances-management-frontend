@@ -137,7 +137,6 @@ interface SecurityManagementInterface {
 
 export function SecurityManagement(response: SecurityManagementInterface) {
     const loginResponse = response;
-    console.log(response);
 
     const split1 = loginResponse.data.t.split("|")[0];
     const split2 = loginResponse.data.t.split("|")[1];

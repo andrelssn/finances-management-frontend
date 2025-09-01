@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-// import { useMediaQuery, useTheme } from "@mui/material";
+import { useMediaQuery, useTheme } from "@mui/material";
 
 // Components
 import Login from "../Views/Login/Login";
@@ -13,6 +13,7 @@ import Register from "../Views/Register/Register";
 // Types
 import type { SnackbarState } from "../Components/MySnackbar/MySnackbar";
 import MonthlyExpenses from "../Views/MonthlyExpenses/MonthlyExpenses";
+import Panel from "../Views/Panel/Panel";
 
 export type MainRouterTypes = {
     setSnackbar: React.Dispatch<React.SetStateAction<SnackbarState>>;
@@ -20,8 +21,8 @@ export type MainRouterTypes = {
 };
 
 export default function MainRouter({ setSnackbar, reloadCheck } : MainRouterTypes) {
-    // const theme = useTheme();
-    // const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+    const theme = useTheme();
+    const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
     const user = userAuthData((state) => state.user);
 
@@ -31,9 +32,10 @@ export default function MainRouter({ setSnackbar, reloadCheck } : MainRouterType
                 { user ? (
                     <Route
                         path="/"
-                        element={<Header/>}
+                        element={<Header reloadCheck={reloadCheck} setSnackbar={setSnackbar} isMobile={isMobile}/>}
                     >
-                        <Route index element={<MonthlyExpenses/>}/>
+                        <Route index element={<Panel/>}/>
+                        <Route path="/monthly-expenses" element={<MonthlyExpenses/>}/>
                     </Route>
                 ) : (
                     <Route
@@ -41,6 +43,7 @@ export default function MainRouter({ setSnackbar, reloadCheck } : MainRouterType
                         element={<HeaderAuth/>}
                     >
                         <Route index element={<Home/>}/>
+                        <Route path="*" element={<Navigate to="/" replace />}/>
                     </Route>
                 )}
 
